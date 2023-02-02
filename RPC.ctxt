@@ -8,5 +8,5 @@ comment3.params=stringChoice\ playerChoice
 comment3.target=void\ winner(java.lang.String,\ java.lang.String)
 comment4.params=args
 comment4.target=void\ main(java.lang.String[])
-comment4.text=\r\n\ The\ main\ method\ instantiates\ and\ runs\ the\ program\r\n
+comment4.text=\n\ The\ main\ method\ instantiates\ and\ runs\ the\ program\n
 numComments=5

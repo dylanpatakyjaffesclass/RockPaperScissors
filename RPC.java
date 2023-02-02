@@ -4,7 +4,10 @@ import java.util.InputMismatchException;
 public class RPC
 {
     int keepGoing = 1;
-    int cpuChoice = 0; 
+    int cpuChoice = 0;
+    int playerScore = 0;
+    int cpuScore = 0;
+    String totalScore = "You have won " + playerScore + " time(s) and the computer has won " + cpuScore + " time(s)";
     String stringChoice;
     String playerChoice;                          // 1=rock,2=paper,3=scissors
     Scanner scanner = new Scanner(System.in);
@@ -18,7 +21,7 @@ public class RPC
     public void runEventLoop() {
         while (shouldContinue) {
             System.out.println("Will you throw out rock, paper, or scissors? (case sensitive)");
-            System.out.println("if you want to quit, type Stop");
+            System.out.println("if you want to quit, type Stop -- to see the score type Score");
             try {
                 playerChoice = scanner.next();
                 if(keepGoing == 0) { 
@@ -39,6 +42,10 @@ public class RPC
                 else if(playerChoice.equals("Stop")) {
                     shouldContinue = false;
                 }
+                else if(playerChoice.equals("Score")) {
+                    totalScore = "You have won " + playerScore + " time(s) and the computer has won " + cpuScore + " time(s)";
+                    System.out.println(totalScore);
+                }
                 else {
                     System.out.println(playerChoice + " is not a valid option; please choose either rock, paper, or scissors.");
                 }
@@ -52,16 +59,22 @@ public class RPC
     public void winner(String stringChoice, String playerChoice) {
         if (playerChoice.equals("rock") && stringChoice.equals("scissors")) {
             System.out.println("You win!");
+            playerScore++;
         } else if (playerChoice.equals("scissors") && stringChoice.equals("paper")) {
             System.out.println("You win!");
+            playerScore++;
         } else if (playerChoice.equals("paper") && stringChoice.equals("rock")) {
             System.out.println("You win!");
+            playerScore++;
         } else if (stringChoice.equals("rock") && playerChoice.equals("scissors")) {
             System.out.println("The computer wins...");
+            cpuScore++;
         } else if (stringChoice.equals("scissors") && playerChoice.equals("paper")) {
             System.out.println("The computer wins...");
+            cpuScore++;
         } else if (stringChoice.equals("paper") && playerChoice.equals("rock")) {
             System.out.println("The computer wins...");
+            cpuScore++;
         } else {
             System.out.println("You tied.");
         }
